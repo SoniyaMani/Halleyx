@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Login</title>
+  <style>
+    body {
+      font-family: Arial;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .login-box {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px gray;
+      width: 300px;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    .error {
+      color: red;
+      text-align: center;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>Admin Login</h2>
+    <form id="admin-login-form">
+      <input type="email" id="admin_email" placeholder="Email" required />
+      <input type="password" id="admin_password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+    <div id="admin-error-msg" class="error">Invalid credentials.</div>
+  </div>
+
+  <!-- ✅ SCRIPT GOES HERE -->
+  <script>
+    console.log("Admin login script loaded");
+
+    document.getElementById('admin-login-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById('admin_email').value;
+      const password = document.getElementById('admin_password').value;
+
+      try {
+        const res = await fetch('http://localhost:3000/api/admin/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          localStorage.setItem('adminToken', data.token);
+          window.location.href = 'admin_dashboard.html';
+        } else {
+          document.getElementById('admin-error-msg').innerText = data.message || 'Invalid credentials';
+          document.getElementById('admin-error-msg').style.display = 'block';
+        }
+      } catch (err) {
+        console.error('Login failed:', err);
+        document.getElementById('admin-error-msg').innerText = 'Server error. Try again later.';
+        document.getElementById('admin-error-msg').style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>

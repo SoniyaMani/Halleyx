@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Halleyx - Home</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('banner.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;        
+
+      background-size: cover;
+      color: #fff;
+    }
+
+    header {
+      background-color:blueviolet;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 24px;
+      letter-spacing: 1.5px;
+      user-select: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      padding: 6px 10px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      background-color: #007acc;
+    }
+
+    @media (max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+        background-color: #004080;
+        position: absolute;
+        top: 60px;
+        right: 30px;
+        width: 180px;
+        display: none;
+        border-radius: 4px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+        cursor: pointer;
+      }
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      user-select: none;
+    }
+
+    main {
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      backdrop-filter: brightness(90%);
+    }
+
+    main h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    main p {
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Halleyx</div>
+  <nav>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <ul id="nav-list">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="profile.html">Profile Management</a></li>
+      <li><a href="products.html">Product Browsing</a></li>
+      <li><a href="orders.html">Order Management</a></li>
+      <li><a href="order-history.html">Order History</a></li>
+      <li><a href="register.html">Register</a></li>
+      <li><a href="login.html">Login</a></li>
+      
+      <li><a href="admin_login.html">Admin</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  
+</main>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const navList = document.getElementById('nav-list');
+  toggle.addEventListener('click', () => {
+    navList.classList.toggle('show');
+  });
+</script>
+
+</body>
+</html>

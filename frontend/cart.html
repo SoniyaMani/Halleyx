@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Cart</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    h2 {
+      text-align: center;
+      color: #6f2cff;
+    }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .cart-item img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-right: 20px;
+    }
+    .cart-info {
+      flex-grow: 1;
+    }
+    .cart-info h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+    .cart-info p {
+      margin: 5px 0;
+    }
+    .buy-btn {
+      background-color: #6f2cff;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .empty {
+      text-align: center;
+      color: red;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Your Shopping Cart</h2>
+  <div id="cartItems"></div>
+
+  <script>
+  const cartItemsDiv = document.getElementById('cartItems');
+
+  async function fetchCart() {
+    try {
+      const response = await fetch("http://localhost:5000/api/cart");
+      const cart = await response.json();
+
+      if (cart.length === 0) {
+        cartItemsDiv.innerHTML = '<p class="empty">No items in the cart.</p>';
+        return;
+      }
+
+      cart.forEach(item => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'cart-item';
+        itemDiv.innerHTML = `
+          <img src="${item.image}" alt="${item.name}">
+          <div class="cart-info">
+            <h3>${item.name}</h3>
+            <p><strong>Price:</strong> ₹${item.price}</p>
+            <button class="buy-btn" onclick="buyNow('${item.name}', ${item.price})">Buy Now</button>
+          </div>
+        `;
+        cartItemsDiv.appendChild(itemDiv);
+      });
+
+    } catch (error) {
+      console.error("Failed to fetch cart:", error);
+      cartItemsDiv.innerHTML = '<p class="empty">Server error loading cart.</p>';
+    }
+  }
+
+  function buyNow(name, price) {
+    alert('Buying: ' + name + ' for ₹' + price);
+    // You can add payment or order logic here
+  }
+
+  // Load cart items on page load
+  fetchCart();
+</script>
+
+
+</body>

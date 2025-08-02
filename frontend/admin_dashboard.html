@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+</head>
+<body>
+  <h1>Welcome, Admin!</h1>
+  <p>You are logged in.</p>
+  <button onclick="logout()">Logout</button>
+
+  <script>
+  const token = localStorage.getItem('adminToken');
+  if (!token) {
+    window.location.href = '/admin.html'; // if not logged in, go back to login
+  }
+</script>
+
+</body>
+</html>

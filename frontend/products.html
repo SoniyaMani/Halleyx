@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Products - Halleyx</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+    }
+    .header {
+      background-color: #fff;
+      padding: 15px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #6f2cff;
+    }
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 30px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      width: 200px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: scale(1.03);
+    }
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+      height: 220px;
+      object-fit: cover;
+    }
+    .card h4 {
+      font-size: 16px;
+      margin: 10px 0 5px;
+    }
+    .price {
+      color: green;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .rating {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+    .btn {
+      background-color: #6f2cff;
+      color: white;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 20px;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">Explore Products</div>
+
+  <div class="products">
+    <div class="card">
+      <img src="images/product1.jpg" alt="Dress 1">
+      <h4>Pretty Latest Women Dresses</h4>
+      <div class="price">₹235</div>
+      <div class="rating">3.8 ★ | 474 reviews</div>
+      <button class="btn" onclick="addToCart('Pretty Latest Women Dresses', 235, 'images/product1.jpg')">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="images/product2.jpg" alt="Dress 2">
+      <h4>Trendy Fabulous Kurtis</h4>
+      <div class="price">₹346</div>
+      <div class="rating">4.3 ★ | 742 reviews</div>
+      <button class="btn" onclick="addToCart('Trendy Fabulous Kurtis', 346, 'images/product2.jpg')">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="images/product3.jpg" alt="Dress 3">
+      <h4>Trendy Modern Dress</h4>
+      <div class="price">₹203</div>
+      <div class="rating">3.8 ★ | 1225 reviews</div>
+      <button class="btn" onclick="addToCart('Trendy Modern Dress', 203, 'images/product3.jpg')">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="images/product4.jpg" alt="Dress 4">
+      <h4>New Trend Dress</h4>
+      <div class="price">₹172</div>
+      <div class="rating">3.8 ★ | 3346 reviews</div>
+      <button class="btn" onclick="addToCart('New Trend Dress', 172, 'images/product4.jpg')">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="images/product5.jpg" alt="Dress 5">
+      <h4>New Trend Dress</h4>
+      <div class="price">₹378</div>
+      <div class="rating">4.2 ★ | 6787 reviews</div>
+      <button class="btn" onclick="addToCart('New Trend Dress', 378, 'images/product5.jpg')">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="images/product6.jpg" alt="Dress 6">
+      <h4>Jaipuri Anarkali</h4>
+      <div class="price">₹470</div>
+      <div class="rating">4.9 ★ | 3378 reviews</div>
+      <button class="btn" onclick="addToCart('Jaipuri Anarkali', 470, 'images/product6.jpg')">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="images/product7.jpg" alt="Dress 7">
+      <h4>Fancy Casual Wear</h4>
+      <div class="price">₹299</div>
+      <div class="rating">4.1 ★ | 3346 reviews</div>
+      <button class="btn" onclick="addToCart('Fancy Casual Wear', 299, 'images/product7.jpg')">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="images/product8.jpg" alt="Dress 8">
+      <h4>Trendy Kurtis</h4>
+      <div class="price">₹349</div>
+      <div class="rating">4.6 ★ | 3786 reviews</div>
+      <button class="btn" onclick="addToCart('Trendy Kurtis', 349, 'images/product8.jpg')">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="images/product9.jpg" alt="Dress 9">
+      <h4>Kashvi Attractive Kurtis</h4>
+      <div class="price">₹449</div>
+      <div class="rating">4.6 ★ | 3874 reviews</div>
+      <button class="btn" onclick="addToCart('Kashvi Attractive Kurtis', 449, 'images/product9.jpg')">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="images/product10.jpg" alt="Dress 10">
+      <h4>Banitha Fabulous Kurtis</h4>
+      <div class="price">₹499</div>
+      <div class="rating">5.0 ★ | 4678 reviews</div>
+      <button class="btn" onclick="addToCart('Banitha Fabulous Kurtis', 499, 'images/product10.jpg')">Add to Cart</button>
+    </div>
+  </div>
+
+ <script>
+  // New addToCart function to send product to backend
+  async function addToCart(productName, productPrice, imageUrl) {
+    const product = {
+      name: productName,
+      price: productPrice,
+      image: imageUrl
+    };
+
+    try {
+      const response = await fetch("http://localhost:5000/api/cart", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(product)
+      });
+
+      if (response.ok) {
+        alert("✅ Item added to cart!");
+        window.location.href = "cart.html";
+      } else {
+        alert("❌ Failed to add item to cart.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("🚫 Server error. Please try again.");
+    }
+  }
+</script>
+
+
+</body>
+</html>

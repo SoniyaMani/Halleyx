@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Profile</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header> ... </header>
+  <main>
+    <h2>My Profile</h2>
+    <form id="profile-form">
+      <label>First Name</label><input id="firstName" required>
+      <label>Last Name</label><input id="lastName" required>
+      <label>Email</label><input id="email" type="email" disabled>
+      <button type="submit">Save Changes</button>
+    </form>
+  </main>
+
+  <script>
+    // Prefill example values (can be dynamic if you store session/email)
+    document.getElementById('firstName').value = 'Soniya';
+    document.getElementById('lastName').value = 'Mani';
+    document.getElementById('email').value = 'soniyamani029@gmail.com';
+
+    document.getElementById('profile-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const profileData = {
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        email: document.getElementById('email').value,
+      };
+
+      fetch('http://localhost:5000/api/profile', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(profileData)
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message);
+      })
+      .catch(err => {
+        alert('Error updating profile');
+        console.error(err);
+      });
+    });
+  </script>
+</body>
+</html>
